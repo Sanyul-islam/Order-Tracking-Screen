@@ -48,6 +48,11 @@ function StatusIcon({ item }) {
 
 function StatusCard({ order }) {
   const stateStyles = {
+    "tracking-unavailable": {
+      background: "bg-indigo-600",
+      eyebrow: "Order update",
+      icon: "⏳",
+    },
     delayed: {
       background: "bg-amber-500",
       eyebrow: "Delivery update",
@@ -58,12 +63,6 @@ function StatusCard({ order }) {
       background: "bg-red-500",
       eyebrow: "Action needed",
       icon: "!",
-    },
-
-    "tracking-unavailable": {
-      background: "bg-indigo-600",
-      eyebrow: "Order update",
-      icon: "⏳",
     },
   };
 

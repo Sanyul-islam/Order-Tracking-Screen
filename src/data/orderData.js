@@ -32,21 +32,25 @@ export const orders = {
 
     timeline: [
       {
+        id: "processing",
         title: "Processing",
         description: "Order confirmed",
         completed: true,
       },
       {
+        id: "shipped",
         title: "Shipped",
         description: "Package left the fulfillment center",
         completed: true,
       },
       {
+        id: "out-for-delivery",
         title: "Out for Delivery",
         description: "Delivery has been delayed",
         current: true,
       },
       {
+        id: "delivered",
         title: "Delivered",
         description: "Waiting for delivery",
         completed: false,
@@ -87,21 +91,25 @@ export const orders = {
 
     timeline: [
       {
+        id: "processing",
         title: "Processing",
         description: "Order confirmed",
         completed: true,
       },
       {
+        id: "shipped",
         title: "Shipped",
         description: "Package left the fulfillment center",
         completed: true,
       },
       {
+        id: "out-for-delivery",
         title: "Out for Delivery",
         description: "Package was on its way",
         completed: true,
       },
       {
+        id: "delivered",
         title: "Delivered",
         description: "September 23 · 2:34 PM",
         completed: true,
@@ -143,21 +151,25 @@ export const orders = {
 
     timeline: [
       {
+        id: "processing",
         title: "Processing",
         description: "Order confirmed",
         completed: true,
       },
       {
+        id: "shipped",
         title: "Shipped",
         description: "Tracking will appear after shipment",
         current: true,
       },
       {
+        id: "out-for-delivery",
         title: "Out for Delivery",
         description: "Waiting for shipment",
         completed: false,
       },
       {
+        id: "delivered",
         title: "Delivered",
         description: "Waiting for delivery",
         completed: false,
