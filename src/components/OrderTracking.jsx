@@ -136,7 +136,7 @@ function DeliveryTimeline({ timeline }) {
 
                 {!isLast && (
                   <div
-                    className={`my-1 h-12 w-[2px] ${
+                    className={`my-1 h-12 w-0.5 ${
                       item.completed ? "bg-emerald-400" : "bg-slate-200"
                     }`}
                   />
@@ -281,7 +281,7 @@ function SupportAction({ order }) {
             </button>
           ) : (
             <div className="mt-4 rounded-xl bg-emerald-50 px-3 py-2.5 text-xs font-medium text-emerald-700">
-              Your request has been submitted. We'll help you shortly.
+              Your request has been submitted. We&apos;ll help you shortly.
             </div>
           )}
         </div>

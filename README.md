@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📦 Order Tracking UI
 
-## Getting Started
+A responsive, mobile-first order tracking interface built with **Next.js, React, Tailwind CSS, and Lucide React**.
 
-First, run the development server:
+This project demonstrates different order delivery scenarios, including delayed orders, delivered-but-not-received orders, and orders where tracking information is not yet available.
+
+## ✨ Features
+
+- 📦 Order tracking timeline
+- 🚚 Processing, Shipped, Out for Delivery, and Delivered statuses
+- ⚠️ Delayed order state
+- ❗ Delivered but not received state
+- ⏳ Tracking unavailable state
+- 📱 Mobile-first responsive design
+- 🎨 Tailwind CSS styling
+- 🔔 Support/action interaction
+- 🧩 Separate order data and UI components
+- 🔄 Preview different order states
+
+## 🛠️ Tech Stack
+
+- Next.js
+- React
+- Tailwind CSS
+- Lucide React
+- JavaScript
+- JSX
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repository-url>
+cd order-tracking
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+Install `lucide-react` if it is not already installed:
+
+```bash
+npm install lucide-react
+```
+
+### 3. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+order-tracking/
+└── src/
+    ├── app/
+    │   ├── globals.css
+    │   ├── layout.js
+    │   └── page.js
+    │
+    ├── components/
+    │   └── OrderTracking.jsx
+    │
+    └── data/
+        └── orderData.js
+```
 
-## Learn More
+## 📋 Supported Order States
 
-To learn more about Next.js, take a look at the following resources:
+The order data is stored in:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+src/data/orderData.js
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application supports the following states:
 
-## Deploy on Vercel
+### 1. Delayed Order
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Displays:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Order delayed message
+- Updated delivery estimate
+- Current delivery progress
+- Contact support action
+
+### 2. Delivered but Not Received
+
+Displays:
+
+- Delivered status
+- Delivery date and time
+- Delivery issue message
+- Report delivery issue action
+
+### 3. Tracking Not Available Yet
+
+Displays:
+
+- Order confirmation
+- Tracking unavailable message
+- Estimated delivery date
+- View order details action
+
+## 🧩 Main Component
+
+The main tracking interface is located at:
+
+```text
+src/components/OrderTracking.jsx
+```
+
+The component includes:
+
+- Order header
+- Status card
+- Delivery timeline
+- Order summary
+- Support/action section
+- Order state selector
+
+## 🏗️ Production Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Start the production server:
+
+```bash
+npm start
+```
+
+## 📄 License
+
+This project is created for demonstration and development purposes.
