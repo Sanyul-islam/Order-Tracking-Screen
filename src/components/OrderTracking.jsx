@@ -3,12 +3,12 @@
 import { useState } from "react";
 
 import {
+  AlertTriangle,
   ArrowLeft,
   Check,
   ChevronRight,
   CircleHelp,
   Clock3,
-  Package,
   Truck,
 } from "lucide-react";
 
@@ -21,7 +21,11 @@ import { orders } from "@/data/orderData";
 function StatusIcon({ item }) {
   if (item.completed) {
     return (
-      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-white">
+      <div
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+          item.current ? "bg-emerald-500" : "bg-emerald-500"
+        } text-white`}
+      >
         <Check size={17} strokeWidth={3} />
       </div>
     );
@@ -29,14 +33,14 @@ function StatusIcon({ item }) {
 
   if (item.current) {
     return (
-      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-100">
-        <Truck size={17} />
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-100">
+        <Truck size={17} strokeWidth={2.2} />
       </div>
     );
   }
 
   return (
-    <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-slate-200 bg-white">
+    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-slate-200 bg-white">
       <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
     </div>
   );
@@ -48,21 +52,22 @@ function StatusIcon({ item }) {
 
 function StatusCard({ order }) {
   const stateStyles = {
-    "tracking-unavailable": {
-      background: "bg-indigo-600",
-      eyebrow: "Order update",
-      icon: "⏳",
-    },
     delayed: {
       background: "bg-amber-500",
       eyebrow: "Delivery update",
-      icon: "!",
+      icon: <AlertTriangle size={21} strokeWidth={2.2} />,
     },
 
     "delivered-not-received": {
       background: "bg-red-500",
       eyebrow: "Action needed",
-      icon: "!",
+      icon: <AlertTriangle size={21} strokeWidth={2.2} />,
+    },
+
+    "tracking-unavailable": {
+      background: "bg-indigo-600",
+      eyebrow: "Order update",
+      icon: <Clock3 size={21} strokeWidth={2.2} />,
     },
   };
 
@@ -73,7 +78,7 @@ function StatusCard({ order }) {
       className={`rounded-3xl p-5 text-white shadow-lg ${style.background}`}
     >
       <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-white/70">
             {style.eyebrow}
           </p>
@@ -87,7 +92,7 @@ function StatusCard({ order }) {
           </p>
         </div>
 
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-xl">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/15">
           {style.icon}
         </div>
       </div>
@@ -136,7 +141,7 @@ function DeliveryTimeline({ timeline }) {
 
                 {!isLast && (
                   <div
-                    className={`my-1 h-12 w-0.5 ${
+                    className={`my-1 h-12 w-[2px] ${
                       item.completed ? "bg-emerald-400" : "bg-slate-200"
                     }`}
                   />
@@ -144,9 +149,11 @@ function DeliveryTimeline({ timeline }) {
               </div>
 
               {/* Timeline content */}
-              <div className={`ml-4 flex-1 ${isLast ? "pb-0" : "pb-6"}`}>
+              <div
+                className={`ml-4 min-w-0 flex-1 ${isLast ? "pb-0" : "pb-6"}`}
+              >
                 <div className="flex items-start justify-between gap-3">
-                  <div>
+                  <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <h3
                         className={`text-sm font-semibold ${
@@ -190,7 +197,7 @@ function DeliveryTimeline({ timeline }) {
 function OrderSummary({ product, orderId }) {
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-5 flex items-center justify-between gap-3">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">
             Order summary
@@ -199,7 +206,7 @@ function OrderSummary({ product, orderId }) {
           <h2 className="mt-1 text-lg font-bold text-slate-900">Your item</h2>
         </div>
 
-        <span className="text-[10px] font-medium text-slate-400">
+        <span className="shrink-0 text-[10px] font-medium text-slate-400">
           #{orderId}
         </span>
       </div>
@@ -220,7 +227,7 @@ function OrderSummary({ product, orderId }) {
 
           <p className="mt-1 text-xs text-slate-400">{product.variant}</p>
 
-          <div className="mt-3 flex items-center justify-between">
+          <div className="mt-3 flex items-center justify-between gap-3">
             <span className="text-xs text-slate-400">
               Qty: {product.quantity}
             </span>
@@ -234,7 +241,7 @@ function OrderSummary({ product, orderId }) {
 
       <button
         type="button"
-        className="mt-5 flex w-full items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+        className="mt-5 flex w-full items-center justify-between rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 active:scale-[0.99]"
       >
         <span>View order details</span>
 
@@ -262,7 +269,7 @@ function SupportAction({ order }) {
           <CircleHelp size={19} />
         </div>
 
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
           <h2 className="text-sm font-bold text-slate-900">
             {order.action.label}
           </h2>
@@ -280,7 +287,7 @@ function SupportAction({ order }) {
               {order.action.label}
             </button>
           ) : (
-            <div className="mt-4 rounded-xl bg-emerald-50 px-3 py-2.5 text-xs font-medium text-emerald-700">
+            <div className="mt-4 rounded-xl bg-emerald-50 px-3 py-2.5 text-xs font-medium leading-5 text-emerald-700">
               Your request has been submitted. We&apos;ll help you shortly.
             </div>
           )}
@@ -297,16 +304,16 @@ function SupportAction({ order }) {
 function StateSelector({ orderState, setOrderState }) {
   const states = [
     {
-      id: "trackingUnavailable",
-      label: "No tracking",
-    },
-    {
       id: "delayed",
       label: "Delayed",
     },
     {
       id: "deliveredNotReceived",
       label: "Not received",
+    },
+    {
+      id: "trackingUnavailable",
+      label: "No tracking",
     },
   ];
 
@@ -347,8 +354,7 @@ function StateSelector({ orderState, setOrderState }) {
 export default function OrderTracking() {
   const [orderState, setOrderState] = useState("delayed");
 
-  // IMPORTANT:
-  // This is the ONLY `order` variable in this file.
+  // Only order variable in this component.
   const order = orders[orderState];
 
   return (
@@ -368,7 +374,7 @@ export default function OrderTracking() {
           <span className="text-xs font-medium text-slate-400">{order.id}</span>
         </header>
 
-        {/* Page title */}
+        {/* Page Title */}
         <div className="mt-7">
           <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">
             Order tracking
@@ -379,7 +385,7 @@ export default function OrderTracking() {
           </h1>
         </div>
 
-        {/* State selector */}
+        {/* State Selector */}
         <div className="mt-5">
           <StateSelector
             orderState={orderState}
@@ -387,7 +393,7 @@ export default function OrderTracking() {
           />
         </div>
 
-        {/* Main content */}
+        {/* Main Content */}
         <div className="mt-4 space-y-4">
           <StatusCard order={order} />
 
@@ -399,7 +405,7 @@ export default function OrderTracking() {
         </div>
 
         {/* Footer */}
-        <p className="py-6 text-center text-[11px] text-slate-400">
+        <p className="py-6 text-center text-[11px] leading-5 text-slate-400">
           Order tracking information is updated automatically.
         </p>
       </div>
